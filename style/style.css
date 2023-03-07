@@ -5,6 +5,8 @@ body {
     background-color: black;
     font-family: 'Archivo', sans-serif;
     color: white;
+    max-width: 200px;
+    margin: 0 auto;
 }
 
 a:link, a:visited {
@@ -12,6 +14,5 @@ a:link, a:visited {
 }
 
 .screen {
-    max-width: 200px;
-    margin: 0 auto;
+    
 }
