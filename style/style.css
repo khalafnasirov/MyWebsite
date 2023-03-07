@@ -10,3 +10,7 @@ body {
 a:link, a:visited {
     color: white;
 }
+
+.screen {
+    width: 200px;
+}
