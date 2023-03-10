@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Doom Game</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			background-color: white;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 30px;
+			font-weight: bold;
+			user-select: none;
+		}
+		
+		.shape {
+			position: absolute;
+			border-radius: 50%;
+			background-color: red;
+			width: 50px;
+			height: 50px;
+			animation: move 2s linear infinite;
+		}
+		
+		@keyframes move {
+			from {transform: translate(0, 0);}
+			to {transform: translate(200px, 200px);}
+		}
+		
+		.hit {
+			animation: flash 0.1s linear 4;
+			background-color: black;
+			color: white;
+		}
+		
+		@keyframes flash {
+			from {background-color: white; color: black;}
+			to {background-color: black; color: white;}
+		}
+	</style>
+</head>
+<body>
+	<!-- Your content here -->
+	
+	<script>
+		var shapes = ["circle", "square", "triangle"];
+		var score = 0;
+		
+		function createShape() {
+			var shapeType = shapes[Math.floor(Math.random() * shapes.length)];
+			var shape = document.createElement("div");
+			shape.classList.add("shape");
+			shape.classList.add(shapeType);
+			shape.style.top = Math.floor(Math.random() * (window.innerHeight - 50)) + "px";
+			shape.style.left = Math.floor(Math.random() * (window.innerWidth - 50)) + "px";
+			document.body.appendChild(shape);
+		}
+		
+		function hitShape(shape) {
+			shape.classList.add("hit");
+			score++;
+			setTimeout(function() {
+				document.body.removeChild(shape);
+			}, 100);
+			document.body.style.backgroundColor = "white";
+			setTimeout(function() {
+				document.body.style.backgroundColor = "black";
+			}, 100);
+			setTimeout(function() {
+				document.body.style.backgroundColor = "white";
+			}, 200);
+			setTimeout(function() {
+				document.body.style.backgroundColor = "black";
+			}, 300);
+			setTimeout(function() {
+				document.body.style.backgroundColor = "white";
+			}, 400);
+		}
+		
+		document.addEventListener("click", function(event) {
+			var target = event.target;
+			if (target.classList.contains("shape")) {
+				hitShape(target);
+			}
+		});
+		
+		setInterval(createShape, 1000);
+	</script>
+</body>
+</html>
