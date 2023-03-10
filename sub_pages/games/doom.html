@@ -89,22 +89,22 @@
 		}
 		
 		function hitShape(shape) {
-			shape.classList.add("hit");
-			score++;
-			document.body.style.backgroundColor = "white";
-			setTimeout(function() {
-				document.body.style.backgroundColor = "black";
-			}, 50);
-			setTimeout(function() {
-				document.body.style.backgroundColor = "white";
-			}, 100);
-			setTimeout(function() {
-				document.body.style.backgroundColor = "black";
-			}, 150);
-			setTimeout(function() {
-				document.body.style.backgroundColor = "white";
-			}, 200);
-		}
+    shape.classList.add("hit");
+    score++;
+    document.body.style.backgroundColor = "black";
+    setTimeout(function() {
+        document.body.style.backgroundColor = "white";
+    }, 50);
+    setTimeout(function() {
+        document.body.style.backgroundColor = "black";
+    }, 100);
+    setTimeout(function() {
+        document.body.style.backgroundColor = "white";
+    }, 150);
+    setTimeout(function() {
+        document.body.style.backgroundColor = "black";
+    }, 200);
+}
 		
 		document.addEventListener("click", function(event) {
 			var target = event.target;
