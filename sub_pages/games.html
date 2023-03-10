@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe Game</title>
+  <style>
+    body {
+      background-color: #1f1f1f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      height: 100vh;
+    }
+    .game-board {
+      width: 300px;
+      height: 300px;
+      background-color: #444;
+      margin: 0 auto;
+      margin-top: 50px;
+      position: relative;
+    }
+    .player-label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+    }
+    .player-input {
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-left: 10px;
+      padding: 0;
+      width: 100px;
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      float: left;
+      border: 1px solid #fff;
+      box-sizing: border-box;
+      cursor: pointer;
+      font-size: 3rem;
+      text-align: center;
+      line-height: 1;
+    }
+    .cell:hover {
+      background-color: #777;
+    }
+    .cell.x::after {
+      content: 'X';
+      color: #ff2d55;
+    }
+    .cell.o::after {
+      content: 'O';
+      color: #50e3c2;
+    }
+    .cell.disabled {
+      cursor: default;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="player-label">Player Name:</h1>
+    <input type="text" class="player-input" placeholder="Enter name">
+    <div class="game-board">
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+      <div class="cell"></div>
+    </div>
+  </div>
+  <script>
+    let currentPlayer = 'X';
+    const cells = document.querySelectorAll('.cell');
+    const playerInput = document.querySelector('.player-input');
+    const playerLabel = document.querySelector('.player-label');
+
+    cells.forEach(cell => {
+      cell.addEventListener('click', () => {
+        if (!cell.classList.contains('disabled')) {
+          cell.classList.add(currentPlayer.toLowerCase());
+          cell.classList.add('disabled');
+          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+          playerLabel.textContent = `${playerInput.value}: ${currentPlayer}`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
