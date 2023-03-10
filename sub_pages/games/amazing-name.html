@@ -1,1 +1,83 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Amazing Name</title>
+	<style>
+		body {
+			background-color: #1c1c1c;
+			color: #ffffff;
+			font-size: 2rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+			padding: 0;
+		}
+
+		.letter {
+			display: inline-block;
+			transition: transform 0.3s ease;
+			cursor: pointer;
+		}
+
+		.letter:hover {
+			transform: scale(1.2);
+		}
+
+		.colorful {
+			animation-name: colorful;
+			animation-duration: 2s;
+			animation-iteration-count: infinite;
+			position: absolute;
+			z-index: -1;
+			pointer-events: none;
+		}
+
+		@keyframes colorful {
+			0% {
+				transform: translate(0, 0);
+			}
+			50% {
+				transform: translate(50%, 50%) rotate(90deg);
+			}
+			100% {
+				transform: translate(100%, 0);
+			}
+		}
+	</style>
+</head>
+<body>
+	<label for="name-input">Enter your name:</label>
+	<input type="text" id="name-input">
+
+	<div id="name-display"></div>
+
+	<script>
+		const nameInput = document.getElementById('name-input');
+		const nameDisplay = document.getElementById('name-display');
+
+		nameInput.addEventListener('input', () => {
+			nameDisplay.textContent = nameInput.value;
+		});
+
+		nameDisplay.addEventListener('mouseover', () => {
+			nameDisplay.innerHTML = nameInput.value.split('').map(letter => `<span class="letter">${letter}</span>`).join('');
+			const letters = document.querySelectorAll('.letter');
+			letters.forEach(letter => {
+				letter.addEventListener('mouseover', () => {
+					const colorful = document.createElement('div');
+					colorful.classList.add('colorful');
+					colorful.style.backgroundColor = `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+					document.body.appendChild(colorful);
+					setTimeout(() => {
+						colorful.remove();
+					}, 2000);
+				});
+			});
+		});
+	</script>
+</body>
+</html>
