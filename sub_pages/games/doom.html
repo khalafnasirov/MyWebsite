@@ -46,7 +46,7 @@
 	<!-- Your content here -->
 	
 	<script>
-		var shapes = ["circle", "square", "triangle"];
+		var shapes = ["circle", "square", "triangle", "polygon"];
 		var score = 0;
 		
 		function createShape() {
@@ -57,37 +57,38 @@
 			shape.style.top = Math.floor(Math.random() * (window.innerHeight - 50)) + "px";
 			shape.style.left = Math.floor(Math.random() * (window.innerWidth - 50)) + "px";
 			document.body.appendChild(shape);
+			setTimeout(function() {
+				document.body.removeChild(shape);
+			}, 2000);
 		}
 		
 		function hitShape(shape) {
 			shape.classList.add("hit");
 			score++;
-			setTimeout(function() {
-				document.body.removeChild(shape);
-			}, 100);
 			document.body.style.backgroundColor = "white";
 			setTimeout(function() {
 				document.body.style.backgroundColor = "black";
+			}, 50);
+			setTimeout(function() {
+				document.body.style.backgroundColor = "white";
 			}, 100);
+			setTimeout(function() {
+				document.body.style.backgroundColor = "black";
+			}, 150);
 			setTimeout(function() {
 				document.body.style.backgroundColor = "white";
 			}, 200);
-			setTimeout(function() {
-				document.body.style.backgroundColor = "black";
-			}, 300);
-			setTimeout(function() {
-				document.body.style.backgroundColor = "white";
-			}, 400);
 		}
 		
 		document.addEventListener("click", function(event) {
 			var target = event.target;
 			if (target.classList.contains("shape")) {
 				hitShape(target);
+				document.body.removeChild(target);
 			}
 		});
 		
-		setInterval(createShape, 1000);
+		setInterval(createShape, 500);
 	</script>
 </body>
 </html>
