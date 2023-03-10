@@ -1,0 +1,42 @@
+body {
+	background-color: #1a1a1a;
+}
+
+h1 {
+	color: #fff;
+	font-size: 40px;
+	text-align: center;
+	margin-top: 100px;
+}
+
+#name-container {
+	margin-top: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.letter {
+	font-size: 100px;
+	font-weight: bold;
+	color: #fff;
+	margin: 5px;
+	transition: all 0.5s ease;
+}
+
+.letter:hover {
+	transform: scale(1.2);
+	color: #F44336;
+	cursor: pointer;
+	background-color: #03A9F4;
+}
+
+.animate {
+	animation: move 2s infinite;
+}
+
+@keyframes move {
+	from {transform: translate(0, 0);}
+	to {transform: translate(500px, 500px);}
+}
