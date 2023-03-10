@@ -2,101 +2,12 @@
 <html>
 <head>
 	<title>Amazing Name</title>
-	<style>
-		body {
-			background-color: #1c1c1c;
-			color: white;
-			font-size: 30px;
-			text-align: center;
-			height: 100%;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			justify-content: center;
-		}
-
-		span {
-			display: inline-block;
-			transition: color 0.5s;
-			margin: 10px;
-		}
-
-		.amazing {
-			font-size: 200px;
-			font-weight: bold;
-			margin-bottom: 50px;
-		}
-
-		.object {
-			position: absolute;
-			animation: move 3s infinite;
-			user-select: none;
-		}
-
-		@keyframes move {
-			from {
-				transform: translateY(-100%);
-			}
-			to {
-				transform: translateY(100%);
-			}
-		}
-
-		.red {
-			color: #e74c3c;
-		}
-
-		.blue {
-			color: #3498db;
-		}
-
-		.green {
-			color: #2ecc71;
-		}
-
-		.yellow {
-			color: #f1c40f;
-		}
-
-		.purple {
-			color: #9b59b6;
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="amazing-name/style.css">
+	<script src="amazing-name/script.js"></script>
 </head>
 <body>
-	<label for="name">Enter Your Name:</label>
-	<input type="text" id="name" placeholder="Your Name" oninput="updateName()">
-	<div class="amazing">Your Amazing Name</div>
-	<script>
-		function updateName() {
-			let name = document.getElementById("name").value;
-			let amazingName = document.querySelector(".amazing");
-			let objects = document.querySelectorAll(".object");
-			amazingName.innerHTML = "";
-			for (let i = 0; i < name.length; i++) {
-				let letter = name[i];
-				let span = document.createElement("span");
-				span.innerText = letter;
-				span.addEventListener("mouseover", function() {
-					let colors = ["red", "blue", "green", "yellow", "purple"];
-					let color = colors[Math.floor(Math.random() * colors.length)];
-					span.classList.add(color);
-					setTimeout(() => {
-						span.classList.remove(color);
-					}, 1000);
-					let object = document.createElement("div");
-					object.classList.add("object");
-					object.innerText = "🤪";
-					object.style.top = `${Math.random() * 100}%`;
-					object.style.left = `${Math.random() * 100}%`;
-					document.body.appendChild(object);
-					setTimeout(() => {
-						object.remove();
-					}, 3000);
-				});
-				amazingName.appendChild(span);
-			}
-		}
-	</script>
+	<h1>Enter Your Name:</h1>
+	<input type="text" id="name-input" oninput="showName()">
+	<div id="name-container"></div>
 </body>
 </html>
