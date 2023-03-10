@@ -15,11 +15,15 @@
     .container {
       max-width: 800px;
       margin: 0 auto;
-      text-align: center;
+      position: relative;
+      height: 100vh;
     }
     .label {
       font-size: 5rem;
-      margin-top: 20vh;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
     .btn-container {
       position: absolute;
@@ -32,10 +36,11 @@
       margin-left: 1rem;
       background-color: transparent;
       color: #fff;
-      border: 2px solid #fff;
+      border: none;
       border-radius: 20px;
       text-transform: uppercase;
       letter-spacing: 2px;
+      text-decoration: none;
       transition: all 0.3s ease-in-out;
     }
     .btn:hover {
