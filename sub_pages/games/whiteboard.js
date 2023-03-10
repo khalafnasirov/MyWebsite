@@ -4,41 +4,49 @@ const ctx = canvas.getContext("2d");
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
-
-canvas.addEventListener("mousedown", startDrawing);
-canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("mouseup", endDrawing);
-canvas.addEventListener("mouseout", endDrawing);
-
-function startDrawing(e) {
-  isDrawing = true;
-  [lastX, lastY] = [e.offsetX, e.offsetY];
-}
+let hue = 0;
+let direction = true;
 
 function draw(e) {
   if (!isDrawing) return;
+
+  ctx.strokeStyle = document.getElementById("drawing-color").value; // set stroke style based on selected color
   ctx.beginPath();
   ctx.moveTo(lastX, lastY);
   ctx.lineTo(e.offsetX, e.offsetY);
   ctx.stroke();
+
   [lastX, lastY] = [e.offsetX, e.offsetY];
+
+  hue++;
+  if (hue >= 360) {
+    hue = 0;
+  }
+
+  if (ctx.lineWidth >= 100 || ctx.lineWidth <= 1) {
+    direction = !direction;
+  }
+
+  if (direction) {
+    ctx.lineWidth++;
+  } else {
+    ctx.lineWidth--;
+  }
 }
 
-function endDrawing() {
-  isDrawing = false;
-}
+canvas.addEventListener("mousedown", (e) => {
+  isDrawing = true;
+  [lastX, lastY] = [e.offsetX, e.offsetY];
+});
 
-const clearButton = document.getElementById("clear-button");
-clearButton.addEventListener("click", clearCanvas);
+canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mouseup", () => (isDrawing = false));
+canvas.addEventListener("mouseout", () => (isDrawing = false));
 
-function clearCanvas() {
+document.getElementById("clear-button").addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-}
+});
 
-const drawingNameInput = document.getElementById("drawing-name");
-drawingNameInput.addEventListener("input", updateDrawingName);
-
-function updateDrawingName() {
-  const drawingName = drawingNameInput.value;
-  document.title = `${drawingName} - Whiteboard Drawing`;
-}
+document.getElementById("drawing-name").addEventListener("input", (e) => {
+  document.getElementById("drawing-title").textContent = e.target.value;
+});
