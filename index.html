@@ -1,38 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	
-	<title>Xələf Nəsirov - Game Developer</title>
-	
-	<style>
-		h1 {
-			font-size: 72px;
-			text-align: center;
-			margin-top: 200px;
-		}
-		
-		html, body {
-			height: 100%;
-			margin: 0;
-			padding: 0;
-		}
-
-		.container {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			height: 100%;
-		}
-	</style>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="./style/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dark Website</title>
+  <style>
+    body {
+      background-color: #1f1f1f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .label {
+      font-size: 5rem;
+      margin-top: 20vh;
+    }
+    .btn-container {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin-left: 1rem;
+      background-color: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease-in-out;
+    }
+    .btn:hover {
+      background-color: #fff;
+      color: #1f1f1f;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+  </style>
 </head>
 <body>
-	<div class="container">
-		<h1><a href="./sub_pages/about.html">Play and enjoy</a></h1>
-	</div>
+  <div class="container">
+    <h1 class="label">Welcome to My Website</h1>
+    <div class="btn-container">
+      <a href="#" class="btn">Games</a>
+      <a href="#" class="btn">About</a>
+      <a href="#" class="btn">Experience</a>
+    </div>
+  </div>
 </body>
 </html>
